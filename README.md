@@ -36,9 +36,9 @@ Grab the latest build from [**Releases**](https://github.com/Linseven/pdf2excel/
 | Platform | File | Notes |
 |---|---|---|
 | macOS (Apple Silicon) | `PDF2Excel-macOS-arm64.zip` | First launch: right-click → **Open** |
-| Windows 10/11 | `PDF2Excel.exe` | Build locally with one click — see [docs/BUILD_WINDOWS.md](docs/BUILD_WINDOWS.md) |
+| Windows 10/11 | `PDF2Excel.exe` | Portable single file; see [docs/BUILD_WINDOWS.md](docs/BUILD_WINDOWS.md) for SmartScreen & WebView2 notes |
 
-> Intel Mac & Windows binaries are not pre-published; build from source below (it's one command).
+> Intel Mac binaries are not pre-published; build from source below (it's one command).
 
 ## Build from Source
 
@@ -122,7 +122,7 @@ python tests/gui_smoke.py    # 18 real-window GUI assertions
 ## Roadmap
 
 - [ ] OCR support for scanned PDFs
-- [ ] Pre-built Windows installer in Releases
+- [x] Pre-built Windows binary in Releases
 - [ ] English UI toggle
 - [ ] CSV / Markdown export
 

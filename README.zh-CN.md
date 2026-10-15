@@ -36,9 +36,9 @@
 | 平台 | 文件 | 备注 |
 |---|---|---|
 | macOS（Apple Silicon） | `PDF2Excel-macOS-arm64.zip` | 首次打开：右键 → **打开** |
-| Windows 10/11 | `PDF2Excel.exe` | 本机一键构建，见 [docs/BUILD_WINDOWS.md](docs/BUILD_WINDOWS.md) |
+| Windows 10/11 | `PDF2Excel.exe` | 免安装单文件；SmartScreen 与 WebView2 说明见 [docs/BUILD_WINDOWS.md](docs/BUILD_WINDOWS.md) |
 
-> Intel Mac 与 Windows 预编译包暂未发布，可按下文一键从源码构建。
+> Intel Mac 预编译包暂未发布，可按下文一键从源码构建。
 
 ## 从源码构建
 
@@ -122,7 +122,7 @@ python tests/gui_smoke.py    # 18 项真实窗口 GUI 断言
 ## 路线图
 
 - [ ] 扫描件 OCR 支持
-- [ ] Releases 提供 Windows 预编译安装包
+- [x] Releases 提供 Windows 预编译包
 - [ ] 英文界面切换
 - [ ] CSV / Markdown 导出
 
