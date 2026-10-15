@@ -5,7 +5,7 @@ Thanks for your interest in contributing! / 感谢你的贡献意愿！
 ## Quick Start
 
 ```bash
-git clone https://github.com/OWNER/pdf2excel.git
+git clone https://github.com/Linseven/pdf2excel.git
 cd pdf2excel
 python3 -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements-dev.txt

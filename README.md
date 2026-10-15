@@ -11,7 +11,7 @@ English | [简体中文](README.zh-CN.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Windows-lightgrey)](#download)
 [![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)](#build-from-source)
-[![Release](https://img.shields.io/github/v/release/OWNER/pdf2excel)](https://github.com/OWNER/pdf2excel/releases)
+[![Release](https://img.shields.io/github/v/release/Linseven/pdf2excel)](https://github.com/Linseven/pdf2excel/releases)
 
 <img src="docs/screenshots/app.png" alt="PDF2Excel screenshot" width="820">
 
@@ -31,7 +31,7 @@ English | [简体中文](README.zh-CN.md)
 
 ## Download
 
-Grab the latest build from [**Releases**](https://github.com/OWNER/pdf2excel/releases):
+Grab the latest build from [**Releases**](https://github.com/Linseven/pdf2excel/releases):
 
 | Platform | File | Notes |
 |---|---|---|
@@ -47,7 +47,7 @@ Requires **Python 3.10+**.
 **macOS**
 
 ```bash
-git clone https://github.com/OWNER/pdf2excel.git
+git clone https://github.com/Linseven/pdf2excel.git
 cd pdf2excel
 bash build_mac.sh          # → dist/PDF2Excel.app
 ```
@@ -55,7 +55,7 @@ bash build_mac.sh          # → dist/PDF2Excel.app
 **Windows**
 
 ```bat
-git clone https://github.com/OWNER/pdf2excel.git
+git clone https://github.com/Linseven/pdf2excel.git
 cd pdf2excel
 build_windows.bat          :: → dist\PDF2Excel.exe
 ```
@@ -132,4 +132,4 @@ Issues and PRs are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
-[MIT](LICENSE) © 2026 Seven
+[MIT](LICENSE) © 2026 Linseven
