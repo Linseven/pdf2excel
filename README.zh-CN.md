@@ -11,7 +11,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Windows-lightgrey)](#下载)
 [![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)](#从源码构建)
-[![Release](https://img.shields.io/github/v/release/OWNER/pdf2excel)](https://github.com/OWNER/pdf2excel/releases)
+[![Release](https://img.shields.io/github/v/release/Linseven/pdf2excel)](https://github.com/Linseven/pdf2excel/releases)
 
 <img src="docs/screenshots/app.png" alt="PDF2Excel 界面截图" width="820">
 
@@ -31,7 +31,7 @@
 
 ## 下载
 
-从 [**Releases**](https://github.com/OWNER/pdf2excel/releases) 获取最新构建：
+从 [**Releases**](https://github.com/Linseven/pdf2excel/releases) 获取最新构建：
 
 | 平台 | 文件 | 备注 |
 |---|---|---|
@@ -47,7 +47,7 @@
 **macOS**
 
 ```bash
-git clone https://github.com/OWNER/pdf2excel.git
+git clone https://github.com/Linseven/pdf2excel.git
 cd pdf2excel
 bash build_mac.sh          # → dist/PDF2Excel.app
 ```
@@ -55,7 +55,7 @@ bash build_mac.sh          # → dist/PDF2Excel.app
 **Windows**
 
 ```bat
-git clone https://github.com/OWNER/pdf2excel.git
+git clone https://github.com/Linseven/pdf2excel.git
 cd pdf2excel
 build_windows.bat          :: → dist\PDF2Excel.exe
 ```
@@ -132,4 +132,4 @@ python tests/gui_smoke.py    # 18 项真实窗口 GUI 断言
 
 ## 开源协议
 
-[MIT](LICENSE) © 2026 Seven
+[MIT](LICENSE) © 2026 Linseven
