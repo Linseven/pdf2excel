@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--
+  截图工具：加载真实 ui/ 界面 + mock 数据，渲染「等待 / 转换中 / 需密码 / 已完成」各状态，
+  供 Chrome headless 截图生成 docs/screenshots/app.png。
+
+  用法：
+    python3 -m http.server 8901  （在项目根目录）
+    Chrome --headless=new --screenshot=docs/screenshots/app.png \
+      --window-size=1140,820 --force-device-scale-factor=2 --hide-scrollbars \
+      --virtual-time-budget=9000 http://127.0.0.1:8901/tools/screenshot.html
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <base href="/ui/">
+  <link rel="stylesheet" href="/ui/style.css">
+  <style>* { animation: none !important; transition: none !important; }</style>
+</head>
+<body>
+<script>
+fetch("/ui/index.html")
+  .then((r) => r.text())
+  .then((html) => {
+    document.body.innerHTML = html.split("<body>")[1].split("</body>")[0];
+
+    // ---- mock Python 桥 ----
+    window.pywebview = {
+      api: {
+        get_defaults: () =>
+          Promise.resolve({
+            outputDir: "/Users/seven/Downloads/PDF2Excel",
+            mode: "auto",
+            sheetMode: "merge",
+            pages: "",
+          }),
+        select_pdfs: () =>
+          Promise.resolve([
+            { path: "/Users/seven/Documents/订单明细 2026.pdf", name: "订单明细 2026.pdf",
+              size: 2539520, pages: 12, encrypted: false, error: null },
+            { path: "/Users/seven/Documents/financial-report.pdf", name: "financial-report.pdf",
+              size: 838860, pages: 6, encrypted: false, error: null },
+            { path: "/Users/seven/Documents/扫描合同.pdf", name: "扫描合同.pdf",
+              size: 524288, pages: 5, encrypted: false, error: null },
+            { path: "/Users/seven/Documents/机密合同.pdf", name: "机密合同.pdf",
+              size: 413696, pages: 8, encrypted: true, error: null },
+          ]),
+        select_output_dir: () => Promise.resolve(null),
+        open_path: () => Promise.resolve(true),
+        start_conversion: () => Promise.resolve({ ok: true }),
+        cancel_conversion: () => Promise.resolve(true),
+      },
+    };
+
+    const s = document.createElement("script");
+    s.src = "/ui/app.js";
+    s.onload = () => {
+      window.dispatchEvent(new Event("pywebviewready"));
+      setTimeout(() => {
+        document.getElementById("dropzone").click(); // 触发 select_pdfs mock → 渲染卡片
+        setTimeout(() => {
+          const ids = Array.from(document.querySelectorAll(".file-card")).map((c) => c.dataset.id);
+          const emit = (event, data) => window.__bridge({ event, data });
+          // 卡片 1：已完成（含一条文本回退提示）
+          emit("file_start", { id: ids[0] });
+          emit("file_done", {
+            id: ids[0],
+            output: "/Users/seven/Downloads/PDF2Excel/订单明细 2026.xlsx",
+            pages: 12, tables: 3, rows: 128,
+            warnings: ["第 3 页未检测到表格，已按纯文本提取"],
+          });
+          // 卡片 2：转换中 4/6
+          emit("file_start", { id: ids[1] });
+          emit("file_progress", { id: ids[1], done: 4, total: 6 });
+          // 卡片 3：失败（扫描件提示）
+          emit("file_start", { id: ids[2] });
+          emit("file_error", { id: ids[2], code: "empty",
+            error: "未能提取到任何表格或文字（文件可能是扫描件，需要 OCR 支持）" });
+          // 卡片 4：保持「需要密码」状态
+          document.getElementById("summary").textContent =
+            "4 个文件 · 31 页 · 输出至 /Users/seven/Downloads/PDF2Excel";
+        }, 300);
+      }, 300);
+    };
+    document.body.appendChild(s);
+  });
+</script>
+</body>
+</html>
